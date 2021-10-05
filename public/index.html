@@ -1,0 +1,142 @@
+<head>
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Formularios requeridos -->
+
+    <br>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2>Obtener todos los productos</h2>
+        </div>
+        <div class="panel-body">
+            <a href="/api/productos">        
+                <button class="btn btn-primary">Obtener Productos</button>
+            </a>
+        </div>
+    </div>
+
+    <br>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2>Agregar Producto</h2>
+        </div>
+        <div class="panel-body">
+            <form action = "/api/productos", method="POST">
+                Titulo: <input type="text", name="title">
+                Precio: <input type="number" step=any name="price">
+                URL Foto: <input type="text", name="thumbnail">
+                <button class="btn btn-success">Agregar</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Otros formularios -->
+
+    <br>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2>Obtener Producto</h2>
+        </div>
+        <div class="panel-body">
+            <form id= "GetProducto", action="javascript:getProducto()" method="POST">
+                ID: <input type="number", id="id">
+                <button class="btn btn-primary">Obtener</button>
+            </form>
+
+            <div id="resultado"></div>
+        </div>
+    
+    </div>
+
+    <br>
+    
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h2>Reemplazar Producto</h2>
+        </div>
+        <div class="panel-body">
+            <form id= "PutProducto", action = "javascript:putProducto()", method="POST">
+                ID: <input type="number", id="id">
+                Titulo: <input type="text", name="title">
+                Precio: <input type="number" step=any name="price">
+                URL Foto: <input type="text", name="thumbnail">
+                <button class="btn btn-warning">Reemplazar</button>
+            </form>
+            
+            <div id="resultado_put"></div>
+        </div>
+    </div>
+
+    <br>
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h2>Eliminar Producto</h2>
+        </div>
+        <div class="panel-body">
+            <form id= "DeleteProducto", action="javascript:deleteProducto()" method="POST">
+                ID: <input type="number", id="id">
+                <button class="btn btn-danger">Eliminar</button>
+            </form>
+            
+            <div id="resultado_delete"></div>
+        </div>
+    
+    </div>
+</body>
+
+
+<script type="text/javascript">
+    
+    function getProducto(){
+        const apiUrl = '/api/productos/' + document.getElementById("GetProducto").elements.id.value
+        const dataRequest = {
+            method: 'GET'
+        };
+        fetch(apiUrl, dataRequest).then(response => {
+            return response.json();
+        }).then(data => {
+            document.getElementById('resultado').innerText = JSON.stringify(data)
+        });
+    }
+
+    function putProducto(){
+        const apiUrl = '/api/productos/' + document.getElementById("PutProducto").elements.id.value
+        const datos = {
+            title: document.getElementById("PutProducto").elements.title.value,
+            price: document.getElementById("PutProducto").elements.price.value,
+            thumbnail: document.getElementById("PutProducto").elements.thumbnail.value,
+        }
+
+        const dataRequest = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'            
+            },
+            body: JSON.stringify(datos)
+        };
+
+        fetch(apiUrl, dataRequest).then(response => {
+            return response.json();
+        }).then(data => {
+            document.getElementById('resultado_put').innerText = JSON.stringify(data)
+        });
+    }
+
+    function deleteProducto(){
+        const apiUrl = '/api/productos/' + document.getElementById("DeleteProducto").elements.id.value
+        const dataRequest = {
+            method: 'DELETE',
+        };
+        
+        fetch(apiUrl, dataRequest).then(response => {
+            return response.json();
+        }).then(data => {
+            document.getElementById('resultado_delete').innerText = JSON.stringify(data)
+        });
+    }
+
+
+
+</script>

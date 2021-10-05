@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Escuadra",
+    "price": 123.45,
+    "thumbnail": "https://icon.foo.bar.escuadra.png",
+    "id": 1
+  },
+  {
+    "title": "Planeta",
+    "price": 345.67,
+    "thumbnail": "https://icon.foo.bar.planeta.png",
+    "id": 3
+  },
+  {
+    "title": "Computadora",
+    "price": 789.56,
+    "thumbnail": "https://icon.foo.bar.computadora.png",
+    "id": 4
+  }
+]
