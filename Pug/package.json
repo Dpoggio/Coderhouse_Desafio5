@@ -1,5 +1,5 @@
 {
-  "name": "coderhouse_desafio4",
+  "name": "coderhouse_desafio5",
   "version": "1.0.0",
   "description": "Servidor con Express",
   "main": "server.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio4.git"
+    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio5.git"
   },
   "author": "Demian Poggio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dpoggio/Coderhouse_Desafio4/issues"
+    "url": "https://github.com/Dpoggio/Coderhouse_Desafio5/issues"
   },
-  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio4#readme",
+  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio5#readme",
   "dependencies": {
     "express": "^4.17.1",
     "pug": "^3.0.2"
