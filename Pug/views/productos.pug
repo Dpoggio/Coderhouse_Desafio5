@@ -1,0 +1,25 @@
+extends layouts/default.pug
+
+block content
+    h2(style="color:blue;") Vista de Productos
+
+    br
+    if productos.length > 0
+        div(class="table-responsive")
+            table(class="table table-dark")
+                tr(style="color: white;")
+                    th Nombre
+                    th Precio
+                    th Foto
+                
+                each producto in productos
+                    tr
+                        td=producto.title
+                        td='$' + producto.price
+                        td: img(src=producto.thumbnail style="max-height:100%; max-width:100%")
+                
+    else
+        h3(class="alert alert-warning") No se encontraron productos
+    
+
+    a(href='/' class="btn btn-success") Cargar nuevo producto

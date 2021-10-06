@@ -1,0 +1,9 @@
+extends layouts/default.pug
+
+block content
+    h1(style="color:blue;") Ingrese producto
+    br
+
+    include ./partials/formularioProducto
+
+    a(href='/productos' class="btn btn-success mt-3 mb-5") Ver listado

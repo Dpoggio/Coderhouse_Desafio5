@@ -22,6 +22,6 @@
   "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio4#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.4"
+    "pug": "^3.0.2"
   }
 }

@@ -1,0 +1,18 @@
+form(action="/productos" method="post")
+
+    div(class="form-group")
+        label(for="title"): i: b Nombre
+        input(id="title" class="form-control" type="text" name="title")
+    
+
+    div(class="form-group")
+        label(for="price"): i: b Precio
+        input(id="price" class="form-control" type="number" step="any" name="price")
+    
+
+    div(class="form-group")
+        label(for="thumbnail"): i: b Foto URL
+        input(id="thumbnail" class="form-control" type="text" name="thumbnail")
+    
+
+    button(class="btn btn-success mt-3 mb-5") Enviar

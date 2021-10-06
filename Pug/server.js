@@ -1,7 +1,6 @@
 
 const express = require('express')
 const { routerProductos } = require("./routers/routerProductos.js")
-const handlebars = require('express-handlebars')
 
 
 /**** CONSTANTES ****/
@@ -17,15 +16,7 @@ const productos = new Contenedor(ARCHIVO_PRODUCTOS)
 const app = express()
 
 // Configuracion Vista
-app.engine('hbs', 
-    handlebars({
-        extname: '.hbs',
-        defaultLayout: 'default.hbs',
-        layoutsDir: __dirname + '/views/layouts',
-        partialsDir: __dirname + '/views/partials'
-    })
-)
-app.set('view engine', 'hbs')
+app.set('view engine', 'pug')
 app.set('views', './views')
 
 // Middleware incio
