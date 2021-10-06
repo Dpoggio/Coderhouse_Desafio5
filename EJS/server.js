@@ -1,8 +1,6 @@
 
 const express = require('express')
 const { routerProductos } = require("./routers/routerProductos.js")
-const handlebars = require('express-handlebars')
-
 
 /**** CONSTANTES ****/
 const PORT = process.env.PORT || 8080
@@ -17,15 +15,7 @@ const productos = new Contenedor(ARCHIVO_PRODUCTOS)
 const app = express()
 
 // Configuracion Vista
-app.engine('hbs', 
-    handlebars({
-        extname: '.hbs',
-        defaultLayout: 'default.hbs',
-        layoutsDir: __dirname + '/views/layouts',
-        partialsDir: __dirname + '/views/partials'
-    })
-)
-app.set('view engine', 'hbs')
+app.set('view engine', 'ejs')
 app.set('views', './views')
 
 // Middleware incio
@@ -35,13 +25,13 @@ app.use(express.urlencoded({extended: true}))
 
 // Routers
 app.get('/', (req, res) => {
-    res.render('main')
+    res.render('layouts/default', { page: '/main' })
 })
 
 app.get('/productos', async (req, res) => {
     try {
         const listaProductos = await productos.getAll()
-        res.render('productos', { productos: listaProductos })
+        res.render('layouts/default', { page: '/productos', productos: listaProductos})
     } catch (error) {
         next(error)
     }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 
-{{> head }}
+<%- include('./../partials/head') %>
 <body>
     <div class="container mt-3">
         <div class="jumbotron">
-            {{{ body }}}
+            <%- include('./..' + page) %>
         </div>
     </div>
 </body>
