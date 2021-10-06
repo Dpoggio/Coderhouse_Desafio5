@@ -19,14 +19,8 @@
   },
   {
     "title": "Calculadora",
-    "price": "123",
+    "price": "456.254",
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-64.png",
     "id": 5
-  },
-  {
-    "title": "Calculadora",
-    "price": "123",
-    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-64.png",
-    "id": 6
   }
 ]
