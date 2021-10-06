@@ -7,15 +7,16 @@ const handlebars = require('express-handlebars')
 /**** CONSTANTES ****/
 const PORT = process.env.PORT || 8080
 const ERROR_CODE = 500
+const ARCHIVO_PRODUCTOS = 'resources/productos.txt'
 
 /*** TMP ****/
 const Contenedor = require('./contenedor.js')
-const ARCHIVO_PRODUCTOS = 'resources/productos.txt'
 const productos = new Contenedor(ARCHIVO_PRODUCTOS)
 
 /**** Inicio App ****/
 const app = express()
 
+// Configuracion Vista
 app.engine('hbs', 
     handlebars({
         extname: '.hbs',
@@ -24,10 +25,10 @@ app.engine('hbs',
         partialsDir: __dirname + '/views/partials'
     })
 )
-
-// Middleware incio
 app.set('view engine', 'hbs')
 app.set('views', './views')
+
+// Middleware incio
 app.use(express.json())
 app.use('/', express.static('public'))
 app.use(express.urlencoded({extended: true}))
@@ -38,13 +39,21 @@ app.get('/', (req, res) => {
 })
 
 app.get('/productos', async (req, res) => {
-    const listaProductos = await productos.getAll()
-    res.render('productos', { productos: listaProductos })
+    try {
+        const listaProductos = await productos.getAll()
+        res.render('productos', { productos: listaProductos })
+    } catch (error) {
+        next(error)
+    }
 })
 
 app.post('/productos', async (req, res) => {
-    await productos.save(req.body)
-    res.redirect('/')
+    try {
+        await productos.save(req.body)
+        res.redirect('/')
+    } catch (error) {
+        next(error)
+    }
 })
 
 app.use('/api/productos', routerProductos)
